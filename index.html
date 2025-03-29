@@ -21,7 +21,13 @@
         await cheerpjInit();
         // Use the full width and height of the browser window
         cheerpjCreateDisplay(window.innerWidth, window.innerHeight);
-        await cheerpjRunJar("/app/src/YourJar.jar");
+        let jarPath;
+        if (window.location.hostname === "anomitroid.github.io") {
+          jarPath = "src/YourJar.jar"; // GitHub Pages path
+        } else {
+          jarPath = "/app/src/YourJar.jar"; // Local/development path
+        }
+        await cheerpjRunJar(jarPath);
       })();
 
       // Optionally, update the display size when the window is resized.
